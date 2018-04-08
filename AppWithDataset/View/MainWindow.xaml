@@ -10,25 +10,25 @@
         <Label Content="Id" IsEnabled="False" HorizontalAlignment="Left" Margin="30,40,0,0" VerticalAlignment="Top"/>
         <Label Content="Name" HorizontalAlignment="Left" Margin="30,71,0,0" VerticalAlignment="Top"/>
         <Label Content="Address" HorizontalAlignment="Left" Margin="30,104,0,0" VerticalAlignment="Top"/>
-        <Label Content="Phone" HorizontalAlignment="Left" Margin="30,136,0,0" VerticalAlignment="Top"/>
-        <Label Content="Username" HorizontalAlignment="Left" Margin="30,160,0,0" VerticalAlignment="Top"/>
-        <Label Content="Password" HorizontalAlignment="Left" Margin="30,186,0,0" VerticalAlignment="Top"/>
-        <Label Content="Code" HorizontalAlignment="Left" Margin="30,213,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="Id" Text="{Binding SelectedUser.ID, Mode=TwoWay}" IsEnabled="False" HorizontalAlignment="Left" Height="23" Margin="133,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300"/>
-        <TextBox Name="Name" Text="{Binding SelectedUser.NAME, Mode=TwoWay}" HorizontalAlignment="Left" Height="23" Margin="133,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300"/>
-        <TextBox Name="Address" Text="{Binding SelectedUser.ADDRESS, Mode=TwoWay}" HorizontalAlignment="Left" Height="23" Margin="133,104,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300"/>
-        <TextBox Name="Phone" Text="{Binding SelectedUser.PHONE, Mode=TwoWay}" HorizontalAlignment="Left" Height="23" Margin="133,132,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300"/>
-        <TextBox Name="Username" Text="{Binding SelectedUser.USERNAME, Mode=TwoWay}" HorizontalAlignment="Left" Height="23" Margin="133,160,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300"/>
-        <TextBox Name="Password" Text="{Binding SelectedUser.PASSWORD, Mode=TwoWay}" HorizontalAlignment="Left" Height="23" Margin="133,188,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300"/>
-        <TextBox Name="Code" Text="{Binding SelectedUser.CODE, Mode=TwoWay}" HorizontalAlignment="Left" Height="23" Margin="133,216,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300"/>
-        <DataGrid Name="UserDataGrid" ItemsSource="{Binding UserList}" SelectedItem="{Binding SelectedUser, Mode=TwoWay}" SelectionMode="Extended" SelectionUnit="FullRow" AutoGenerateColumns="False"  HorizontalAlignment="Left" Width="1000" Height="217" Margin="0,287,-8,0" VerticalAlignment="Top">
+        <Label Content="Phone" HorizontalAlignment="Left" Margin="30,135,0,0" VerticalAlignment="Top"/>
+        <Label Content="Username" HorizontalAlignment="Left" Margin="30,166,0,0" VerticalAlignment="Top"/>
+        <Label Content="Password" HorizontalAlignment="Left" Margin="30,198,0,0" VerticalAlignment="Top"/>
+        <Label Content="Code" HorizontalAlignment="Left" Margin="30,229,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="Id" Text="{Binding SelectedUser.ID, Mode=TwoWay}" IsEnabled="False" HorizontalAlignment="Left" Height="25" Margin="133,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300"/>
+        <TextBox Name="Name" Text="{Binding SelectedUser.NAME, Mode=TwoWay}" HorizontalAlignment="Left" Height="26" Margin="133,71,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300"/>
+        <TextBox Name="Address" Text="{Binding SelectedUser.ADDRESS, Mode=TwoWay}" HorizontalAlignment="Left" Height="26" Margin="133,104,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300"/>
+        <TextBox Name="Phone" Text="{Binding SelectedUser.PHONE, Mode=TwoWay}" HorizontalAlignment="Left" Height="25" Margin="133,136,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300"/>
+        <TextBox Name="Username" Text="{Binding SelectedUser.USERNAME, Mode=TwoWay}" HorizontalAlignment="Left" Height="26" Margin="133,166,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300"/>
+        <TextBox Name="Password" Text="{Binding SelectedUser.PASSWORD, Mode=TwoWay}" HorizontalAlignment="Left" Height="26" Margin="133,198,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300"/>
+        <TextBox Name="Code" Text="{Binding SelectedUser.CODE, Mode=TwoWay}" HorizontalAlignment="Left" Height="25" Margin="133,230,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300"/>
+        <DataGrid Name="UserDataGrid" ItemsSource="{Binding UserList}" SelectedItem="{Binding SelectedUser, Mode=TwoWay}" SelectionMode="Extended" SelectionUnit="FullRow" AutoGenerateColumns="False"  HorizontalAlignment="Left" Width="982" Height="217" Margin="0,287,0,0" VerticalAlignment="Top">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Ho Ten" Binding="{Binding NAME}"/>
-                <DataGridTextColumn Header="Dia chi" Binding="{Binding ADDRESS}" />
-                <DataGridTextColumn Header="So dien thoai" Binding="{Binding PHONE}" />
+                <DataGridTextColumn Width="200" Header="Ho Ten" Binding="{Binding NAME}"/>
+                <DataGridTextColumn Width="600" Header="Dia chi" Binding="{Binding ADDRESS}" />
+                <DataGridTextColumn Width="200" Header="So dien thoai" Binding="{Binding PHONE}" />
             </DataGrid.Columns>
         </DataGrid>
-        <Button Name="Add" Content="Add" Command="{Binding AddCommand}" CommandParameter="{Binding SelectedUser}"  HorizontalAlignment="Left" Margin="853,40,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Name="Add" Content="Add" Command="{Binding AddCommand}" CommandParameter="{Binding SelectedUser }"  HorizontalAlignment="Left" Margin="853,40,0,0" VerticalAlignment="Top" Width="75"/>
         <Button Name="Update" Content="Update" Command="{Binding UpdateCommand}" CommandParameter="{Binding SelectedUser}" HorizontalAlignment="Left" Margin="853,71,0,0" VerticalAlignment="Top" Width="75"/>
         <Button Name="Delete" Content="Delete" Command="{Binding DeleteCommand}" CommandParameter="{Binding SelectedUser}" HorizontalAlignment="Left" Margin="853,104,0,0" VerticalAlignment="Top" Width="75"/>
         <Button Name="Empty" Content="Empty" Command="{Binding EmptyCommand}" CommandParameter="{Binding SelectedUser}" HorizontalAlignment="Left" Margin="853,136,0,0" VerticalAlignment="Top" Width="75"/>

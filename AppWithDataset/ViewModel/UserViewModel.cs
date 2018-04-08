@@ -13,6 +13,7 @@ namespace AppWithDataset.ViewModel
 {
     class UserViewModel : PropertyChangedBase
     {
+
         // Storage UserList
         private ObservableCollection<USER> _userList;
         public ObservableCollection<USER> UserList
@@ -33,19 +34,24 @@ namespace AppWithDataset.ViewModel
         private USER _selectedUser;
         public USER SelectedUser
         {
-            get
+            get { return _selectedUser; }
+            set
             {
                 if (_selectedUser != null)
                 {
-                    Console.WriteLine("GetDebug===========" + _selectedUser.USERNAME);
-                } return _selectedUser;
+                    _selectedUser = value;
+                }
+                else
+                {
+                    _selectedUser = new USER();
+                } OnPropertyChanged("SelectedUser");
             }
-            set { Console.WriteLine("SetDebug===========" + value.ADDRESS); _selectedUser = value; }
         }
         public UserViewModel()
         {
             UserList = new ObservableCollection<USER>(Model.Users.getAllUsers() as List<USER>);
             registerCommand();
+            SelectedUser = UserList.First();
         }
 
         private void Refresh()
@@ -62,16 +68,16 @@ namespace AppWithDataset.ViewModel
         private void registerCommand()
         {
             DeleteCommand = new RelayCommand<USER>(u => u != null, u => { Model.Users.handleDelete(u.ID); Refresh(); });
-            AddCommand = new RelayCommand<USER>(u => u != null, u => { Model.Users.handleInsert(u); Refresh(); });
+            AddCommand = new RelayCommand<USER>(null, u => { Model.Users.handleInsert(u); Refresh(); });
             UpdateCommand = new RelayCommand<USER>(u => u != null, u => { Model.Users.handleUpdate(u); Refresh(); });
-            //EmptyCommand = new RelayCommand<USER>(u => u != null, u => { SelectedUser = null; });
+            EmptyCommand = new RelayCommand<USER>(u => u != null, u => { SelectedUser = new USER(); });
         }
 
         public ObservableCollection<USER> Users { get; set; }
         public ICommand DeleteCommand { get; set; }
         public ICommand AddCommand { get; set; }
         public ICommand UpdateCommand { get; set; }
-        //public ICommand EmptyCommand { get; set; }
+        public ICommand EmptyCommand { get; set; }
         // End action commands
     }
 }
