@@ -81,6 +81,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>UserDBContext.edmx</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\BookViewModel.cs" />
     <Compile Include="ViewModel\PropertyChangedBase.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
     <Compile Include="ViewModel\UserViewModel.cs" />
