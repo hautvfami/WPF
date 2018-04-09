@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using AppWithDataset.Model;
+using System.IO;
 
 namespace AppWithDataset.ViewModel
 {
@@ -69,6 +70,15 @@ namespace AppWithDataset.ViewModel
             Console.WriteLine("=======debug _setPic ============");
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
             dlg.ShowDialog();
+            if (dlg.FileName != null)
+            {
+                FileStream fs = new FileStream(dlg.FileName, FileMode.Open, FileAccess.Read);
+                byte[] data = new byte[fs.Length];
+                fs.Read(data, 0, System.Convert.ToInt32(fs.Length));
+                SelectedUser.AVATAR = data;
+                fs.Close();
+                OnPropertyChanged("SelectedUser");
+            }
         }
 
         // Begin action commands

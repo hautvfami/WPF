@@ -70,11 +70,15 @@ namespace AppWithDataset.ViewModel
             Console.WriteLine("=======debug _setPic ============");
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
             dlg.ShowDialog();
-            FileStream fs = new FileStream(dlg.FileName, FileMode.Open,FileAccess.Read);
-            byte[] data = new byte[fs.Length];
-            fs.Read(data, 0, System.Convert.ToInt32(fs.Length));
-            SelectedBook.COVER = data;
-            fs.Close();
+            if (dlg.FileName != null)
+            {
+                FileStream fs = new FileStream(dlg.FileName, FileMode.Open, FileAccess.Read);
+                byte[] data = new byte[fs.Length];
+                fs.Read(data, 0, System.Convert.ToInt32(fs.Length));
+                SelectedBook.COVER = data;
+                fs.Close();
+                OnPropertyChanged("SelectedBook");
+            }
         }
 
 
