@@ -23,7 +23,11 @@
                 <TextBox Name="Phone" Text="{Binding SelectedUser.PHONE, Mode=TwoWay}" HorizontalAlignment="Left" Height="25" Margin="133,136,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300"/>
                 <TextBox Name="Username" Text="{Binding SelectedUser.USERNAME, Mode=TwoWay}" HorizontalAlignment="Left" Height="26" Margin="133,166,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300"/>
                 <TextBox Name="Password" Text="{Binding SelectedUser.PASSWORD, Mode=TwoWay}" HorizontalAlignment="Left" Height="26" Margin="133,198,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300"/>
-                <TextBox Name="Code" Text="{Binding SelectedUser.CODE, Mode=TwoWay}" HorizontalAlignment="Left" Height="25" Margin="133,230,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300"/>
+                <ComboBox SelectedIndex="{Binding SelectedUser.CODE, Mode=TwoWay}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="300" Height="26" Margin="133,230,0,0">
+                    <ComboBoxItem>Admin</ComboBoxItem>
+                    <ComboBoxItem>Manager</ComboBoxItem>
+                    <ComboBoxItem>Client</ComboBoxItem>
+                </ComboBox>
                 <DataGrid Name="UserDataGrid" ItemsSource="{Binding UserList}" SelectedItem="{Binding SelectedUser, Mode=TwoWay}" SelectionMode="Extended" SelectionUnit="FullRow" AutoGenerateColumns="False"  HorizontalAlignment="Left" Width="982" Height="217" Margin="0,287,0,0" VerticalAlignment="Top">
                     <DataGrid.Columns>
                         <DataGridTextColumn Width="200" Header="Ho Ten" Binding="{Binding NAME}"/>
@@ -38,40 +42,56 @@
                 <Border BorderThickness="2" BorderBrush="GhostWhite"  HorizontalAlignment="Left" Height="145" Margin="471,41,0,0" VerticalAlignment="Top" Width="145"/>
                 <Image Stretch="Fill" Source="../Resources/Images/User.png" HorizontalAlignment="Left" Height="145" Margin="471,41,0,0" VerticalAlignment="Top" Width="145"/>
                 <Image Stretch="Fill" Source="{Binding SelectedUser.AVATAR}" HorizontalAlignment="Left" Height="145" Margin="471,41,0,0" VerticalAlignment="Top" Width="145"/>
+                <Button Command="{Binding SetPicCommand}" Content="Change Avatar" HorizontalAlignment="Left" Height="20" Margin="476,187,0,0" VerticalAlignment="Top" Width="139"></Button>
             </Grid>
         </TabItem>
-        
+
         <TabItem Header="Books Management">
             <Grid DataContext="{StaticResource Book}">
-                <Label Content="Id" IsEnabled="False" HorizontalAlignment="Left" Margin="30,40,0,0" VerticalAlignment="Top"/>
-                <Label Content="Name" HorizontalAlignment="Left" Margin="30,71,0,0" VerticalAlignment="Top"/>
-                <Label Content="Address" HorizontalAlignment="Left" Margin="30,104,0,0" VerticalAlignment="Top"/>
-                <Label Content="Phone" HorizontalAlignment="Left" Margin="30,135,0,0" VerticalAlignment="Top"/>
-                <Label Content="Username" HorizontalAlignment="Left" Margin="30,166,0,0" VerticalAlignment="Top"/>
-                <Label Content="Password" HorizontalAlignment="Left" Margin="30,198,0,0" VerticalAlignment="Top"/>
-                <Label Content="Code" HorizontalAlignment="Left" Margin="30,229,0,0" VerticalAlignment="Top"/>
-                <TextBox Text="{Binding SelectedBook.ID, Mode=TwoWay}" IsEnabled="False" HorizontalAlignment="Left" Height="25" Margin="133,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300"/>
-                <TextBox Text="{Binding SelectedBook.NAME, Mode=TwoWay}" HorizontalAlignment="Left" Height="26" Margin="133,71,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300"/>
-                <TextBox Text="{Binding SelectedBook.ADDRESS, Mode=TwoWay}" HorizontalAlignment="Left" Height="26" Margin="133,104,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300"/>
-                <TextBox Text="{Binding SelectedBook.PHONE, Mode=TwoWay}" HorizontalAlignment="Left" Height="25" Margin="133,136,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300"/>
-                <TextBox Text="{Binding SelectedBook.USERNAME, Mode=TwoWay}" HorizontalAlignment="Left" Height="26" Margin="133,166,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300"/>
-                <TextBox Text="{Binding SelectedBook.PASSWORD, Mode=TwoWay}" HorizontalAlignment="Left" Height="26" Margin="133,198,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300"/>
-                <TextBox Text="{Binding SelectedBook.CODE, Mode=TwoWay}" HorizontalAlignment="Left" Height="25" Margin="133,230,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300"/>
-                <DataGrid ItemsSource="{Binding UserList}" SelectedItem="{Binding SelectedUser, Mode=TwoWay}" SelectionMode="Extended" SelectionUnit="FullRow" AutoGenerateColumns="False"  HorizontalAlignment="Left" Width="982" Height="217" Margin="0,287,0,0" VerticalAlignment="Top">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="90*"/>
+                    <ColumnDefinition Width="403*"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="Tên sách" HorizontalAlignment="Left" Margin="30,40,0,0" VerticalAlignment="Top"/>
+                <Label Content="Nội dung" HorizontalAlignment="Left" Margin="30,70,0,0" VerticalAlignment="Top"/>
+                <Label Content="Tác giả" HorizontalAlignment="Left" Margin="30,130,0,0" VerticalAlignment="Top"/>
+                <Label Content="Nhà xuất bản" HorizontalAlignment="Left" Margin="30,160,0,0" VerticalAlignment="Top"/>
+                <Label Content="Giá" HorizontalAlignment="Left" Margin="30,190,0,0" VerticalAlignment="Top"/>
+                <Label Content="Số lượng còn" HorizontalAlignment="Left" Margin="30,220,0,0" VerticalAlignment="Top"/>
+                <Label Content="Số lượng mượn" HorizontalAlignment="Left" Margin="30,250,0,0" VerticalAlignment="Top"/>
+                <TextBox Text="{Binding SelectedBook.NAME, Mode=TwoWay}" HorizontalAlignment="Left" Height="25" Margin="133,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" Grid.ColumnSpan="2"/>
+                <TextBox Text="{Binding SelectedBook.CONTENT, Mode=TwoWay}" HorizontalAlignment="Left" Height="54" Margin="133,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" Grid.ColumnSpan="2"/>
+                <TextBox Text="{Binding SelectedBook.AUTHOR, Mode=TwoWay}" HorizontalAlignment="Left" Height="26" Margin="133,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" Grid.ColumnSpan="2"/>
+                <TextBox Text="{Binding SelectedBook.PUBLISHER, Mode=TwoWay}" HorizontalAlignment="Left" Height="25" Margin="133,160,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" Grid.ColumnSpan="2"/>
+                <TextBox Text="{Binding SelectedBook.COST, Mode=TwoWay}" HorizontalAlignment="Left" Height="26" Margin="133,190,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" Grid.ColumnSpan="2"/>
+                <TextBox Text="{Binding SelectedBook.IN_LIB, Mode=TwoWay}" HorizontalAlignment="Left" Height="26" Margin="133,220,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" Grid.ColumnSpan="2"/>
+                <TextBox Text="{Binding SelectedBook.OUT_LIB, Mode=TwoWay}" HorizontalAlignment="Left" Height="25" Margin="133,250,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" Grid.ColumnSpan="2"/>
+                <DataGrid ItemsSource="{Binding BookList}" SelectedItem="{Binding SelectedBook, Mode=TwoWay}" SelectionMode="Extended" SelectionUnit="FullRow" AutoGenerateColumns="False"  HorizontalAlignment="Left" Width="982" Height="189" Margin="0,287,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Width="200" Header="Ho Ten" Binding="{Binding NAME}"/>
-                        <DataGridTextColumn Width="600" Header="Dia chi" Binding="{Binding ADDRESS}" />
-                        <DataGridTextColumn Width="200" Header="So dien thoai" Binding="{Binding PHONE}" />
+                        <DataGridTextColumn Width="200" Header="Ten sách" Binding="{Binding NAME}"/>
+                        <DataGridTextColumn Width="400" Header="Nội dung" Binding="{Binding CONTENT}" />
+                        <DataGridTextColumn Width="200" Header="Tác giả" Binding="{Binding AUTHOR}" />
+                        <DataGridTextColumn Width="200" Header="Giá" Binding="{Binding COST}" />
                     </DataGrid.Columns>
                 </DataGrid>
-                <Button Content="Add" Command="{Binding AddCommand}" CommandParameter="{Binding SelectedBook }"  HorizontalAlignment="Left" Margin="853,40,0,0" VerticalAlignment="Top" Width="75"/>
-                <Button Content="Update" Command="{Binding UpdateCommand}" CommandParameter="{Binding SelectedBook}" HorizontalAlignment="Left" Margin="853,71,0,0" VerticalAlignment="Top" Width="75"/>
-                <Button Content="Delete" Command="{Binding DeleteCommand}" CommandParameter="{Binding SelectedBook}" HorizontalAlignment="Left" Margin="853,104,0,0" VerticalAlignment="Top" Width="75"/>
-                <Button Content="Empty" Command="{Binding EmptyCommand}" CommandParameter="{Binding SelectedBook}" HorizontalAlignment="Left" Margin="853,136,0,0" VerticalAlignment="Top" Width="75"/>
-                <Border BorderThickness="2" BorderBrush="GhostWhite"  HorizontalAlignment="Left" Height="145" Margin="471,41,0,0" VerticalAlignment="Top" Width="145"/>
-                <Image Stretch="Fill" Source="../Resources/Images/User.png" HorizontalAlignment="Left" Height="145" Margin="471,41,0,0" VerticalAlignment="Top" Width="145"/>
-                <Image Stretch="Fill" Source="{Binding SelectedBook.AVATAR}" HorizontalAlignment="Left" Height="145" Margin="471,41,0,0" VerticalAlignment="Top" Width="145"/>
+                <Button Content="Add" Command="{Binding AddCommand}" CommandParameter="{Binding SelectedBook }"  HorizontalAlignment="Left" Margin="673.433,40,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1"/>
+                <Button Content="Update" Command="{Binding UpdateCommand}" CommandParameter="{Binding SelectedBook}" HorizontalAlignment="Left" Margin="673.433,71,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1"/>
+                <Button Content="Delete" Command="{Binding DeleteCommand}" CommandParameter="{Binding SelectedBook}" HorizontalAlignment="Left" Margin="673.433,104,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1"/>
+                <Button Content="Empty" Command="{Binding EmptyCommand}" CommandParameter="{Binding SelectedBook}" HorizontalAlignment="Left" Margin="673.433,136,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1"/>
+                <Border BorderThickness="2" BorderBrush="GhostWhite"  HorizontalAlignment="Left" Height="145" Margin="291.433,41,0,0" VerticalAlignment="Top" Width="145" Grid.Column="1"/>
+                <Image Stretch="Fill" Source="../Resources/Images/Book.jpg" HorizontalAlignment="Left" Height="145" Margin="291.433,41,0,0" VerticalAlignment="Top" Width="145" Grid.Column="1"/>
+                <Image Stretch="Fill" Source="{Binding SelectedBook.COVER}" HorizontalAlignment="Left" Height="145" Margin="291.433,41,0,0" VerticalAlignment="Top" Width="145" Grid.Column="1"/>
+                <Button Command="{Binding SetPicCommand}" Content="Change Cover" HorizontalAlignment="Left" Height="20" Margin="291,186,0,0" VerticalAlignment="Top" Width="145" Grid.Column="1"></Button>
             </Grid>
+        </TabItem>
+
+        <TabItem Header="Books Borrow">
+            Constructing...
+        </TabItem>
+
+
+        <TabItem Header="Books Return">
+            Constructing...
         </TabItem>
     </TabControl>
 </Window>

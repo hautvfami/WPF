@@ -5,6 +5,20 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="WFModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BOOKS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="CONTENT" Type="ntext" />
+          <Property Name="AUTHOR" Type="nvarchar" MaxLength="100" />
+          <Property Name="PUBLISHER" Type="nvarchar" MaxLength="100" />
+          <Property Name="COST" Type="int" />
+          <Property Name="IN_LIB" Type="smallint" />
+          <Property Name="OUT_LIB" Type="smallint" />
+          <Property Name="COVER" Type="image" />
+        </EntityType>
         <EntityType Name="USERS">
           <Key>
             <PropertyRef Name="ID" />
@@ -13,12 +27,13 @@
           <Property Name="NAME" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="ADDRESS" Type="nvarchar" MaxLength="200" />
           <Property Name="PHONE" Type="varchar" MaxLength="50" />
-          <Property Name="USERNAME" Type="varchar" MaxLength="50" />
+          <Property Name="USERNAME" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="PASSWORD" Type="varchar" MaxLength="50" />
           <Property Name="CODE" Type="int" />
           <Property Name="AVATAR" Type="image" />
         </EntityType>
         <EntityContainer Name="WFModelStoreContainer">
+          <EntitySet Name="BOOKS" EntityType="Self.BOOKS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="USERS" EntityType="Self.USERS" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -27,6 +42,7 @@
       <Schema Namespace="WFModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="USERS" EntityType="WFModel.USER" />
+          <EntitySet Name="BOOKS" EntityType="WFModel.BOOK" />
         </EntityContainer>
         <EntityType Name="USER">
           <Key>
@@ -36,10 +52,24 @@
           <Property Name="NAME" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="ADDRESS" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="PHONE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="USERNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="USERNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="PASSWORD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="CODE" Type="Int32" />
           <Property Name="AVATAR" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="BOOK">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CONTENT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AUTHOR" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PUBLISHER" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="COST" Type="Int32" />
+          <Property Name="IN_LIB" Type="Int16" />
+          <Property Name="OUT_LIB" Type="Int16" />
+          <Property Name="COVER" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -56,6 +86,21 @@
                 <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
                 <ScalarProperty Name="PHONE" ColumnName="PHONE" />
                 <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BOOKS">
+            <EntityTypeMapping TypeName="WFModel.BOOK">
+              <MappingFragment StoreEntitySet="BOOKS">
+                <ScalarProperty Name="COVER" ColumnName="COVER" />
+                <ScalarProperty Name="OUT_LIB" ColumnName="OUT_LIB" />
+                <ScalarProperty Name="IN_LIB" ColumnName="IN_LIB" />
+                <ScalarProperty Name="COST" ColumnName="COST" />
+                <ScalarProperty Name="PUBLISHER" ColumnName="PUBLISHER" />
+                <ScalarProperty Name="AUTHOR" ColumnName="AUTHOR" />
+                <ScalarProperty Name="CONTENT" ColumnName="CONTENT" />
                 <ScalarProperty Name="NAME" ColumnName="NAME" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>

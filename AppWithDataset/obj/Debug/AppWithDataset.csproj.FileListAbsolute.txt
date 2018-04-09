@@ -17,3 +17,22 @@ c:\users\hautv\documents\visual studio 2013\Projects\AppWithDataset\AppWithDatas
 C:\Users\hautv\documents\visual studio 2013\Projects\AppWithDataset\AppWithDataset\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\hautv\documents\visual studio 2013\Projects\AppWithDataset\AppWithDataset\obj\Debug\View\MainWindow.g.cs
 C:\Users\hautv\documents\visual studio 2013\Projects\AppWithDataset\AppWithDataset\obj\Debug\View\MainWindow.baml
+D:\Programming\CSharp\AppWithDataset\AppWithDataset\bin\Debug\AppWithDataset.exe.config
+D:\Programming\CSharp\AppWithDataset\AppWithDataset\obj\Debug\AppWithDataset.exe
+D:\Programming\CSharp\AppWithDataset\AppWithDataset\obj\Debug\AppWithDataset.pdb
+D:\Programming\CSharp\AppWithDataset\AppWithDataset\bin\Debug\AppWithDataset.exe
+D:\Programming\CSharp\AppWithDataset\AppWithDataset\bin\Debug\AppWithDataset.pdb
+D:\Programming\CSharp\AppWithDataset\AppWithDataset\bin\Debug\EntityFramework.dll
+D:\Programming\CSharp\AppWithDataset\AppWithDataset\bin\Debug\EntityFramework.SqlServer.dll
+D:\Programming\CSharp\AppWithDataset\AppWithDataset\bin\Debug\EntityFramework.xml
+D:\Programming\CSharp\AppWithDataset\AppWithDataset\bin\Debug\EntityFramework.SqlServer.xml
+D:\Programming\CSharp\AppWithDataset\AppWithDataset\obj\Debug\AppWithDataset.csprojResolveAssemblyReference.cache
+D:\Programming\CSharp\AppWithDataset\AppWithDataset\obj\Debug\View\MainWindow.g.cs
+D:\Programming\CSharp\AppWithDataset\AppWithDataset\obj\Debug\App.g.cs
+D:\Programming\CSharp\AppWithDataset\AppWithDataset\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\Programming\CSharp\AppWithDataset\AppWithDataset\obj\Debug\AppWithDataset_MarkupCompile.cache
+D:\Programming\CSharp\AppWithDataset\AppWithDataset\obj\Debug\AppWithDataset_MarkupCompile.lref
+D:\Programming\CSharp\AppWithDataset\AppWithDataset\obj\Debug\View\MainWindow.baml
+D:\Programming\CSharp\AppWithDataset\AppWithDataset\obj\Debug\AppWithDataset.g.resources
+D:\Programming\CSharp\AppWithDataset\AppWithDataset\obj\Debug\AppWithDataset.Properties.Resources.resources
+D:\Programming\CSharp\AppWithDataset\AppWithDataset\obj\Debug\AppWithDataset.csproj.GenerateResource.Cache

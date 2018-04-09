@@ -15,5 +15,20 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="BOOKS">
+      <EntityTypeMapping TypeName="WFModel.BOOK">
+        <MappingFragment StoreEntitySet="BOOKS">
+          <ScalarProperty Name="COVER" ColumnName="COVER" />
+          <ScalarProperty Name="OUT_LIB" ColumnName="OUT_LIB" />
+          <ScalarProperty Name="IN_LIB" ColumnName="IN_LIB" />
+          <ScalarProperty Name="COST" ColumnName="COST" />
+          <ScalarProperty Name="PUBLISHER" ColumnName="PUBLISHER" />
+          <ScalarProperty Name="AUTHOR" ColumnName="AUTHOR" />
+          <ScalarProperty Name="CONTENT" ColumnName="CONTENT" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

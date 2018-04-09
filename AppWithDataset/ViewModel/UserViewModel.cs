@@ -64,6 +64,13 @@ namespace AppWithDataset.ViewModel
         }
 
 
+        public void _setPic()
+        {
+            Console.WriteLine("=======debug _setPic ============");
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+            dlg.ShowDialog();
+        }
+
         // Begin action commands
         private void registerCommand()
         {
@@ -71,6 +78,7 @@ namespace AppWithDataset.ViewModel
             AddCommand = new RelayCommand<USER>(null, u => { Model.Users.handleInsert(u); Refresh(); });
             UpdateCommand = new RelayCommand<USER>(u => u != null, u => { Model.Users.handleUpdate(u); Refresh(); });
             EmptyCommand = new RelayCommand<USER>(u => u != null, u => { SelectedUser = new USER(); });
+            SetPicCommand = new RelayCommand<USER>(null, u => { this._setPic(); });
         }
 
         public ObservableCollection<USER> Users { get; set; }
@@ -78,6 +86,7 @@ namespace AppWithDataset.ViewModel
         public ICommand AddCommand { get; set; }
         public ICommand UpdateCommand { get; set; }
         public ICommand EmptyCommand { get; set; }
+        public ICommand SetPicCommand { get; set; }
         // End action commands
     }
 }

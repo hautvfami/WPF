@@ -2,6 +2,7 @@
 <Schema Namespace="WFModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="USERS" EntityType="WFModel.USER" />
+    <EntitySet Name="BOOKS" EntityType="WFModel.BOOK" />
   </EntityContainer>
   <EntityType Name="USER">
     <Key>
@@ -11,9 +12,23 @@
     <Property Name="NAME" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="ADDRESS" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
     <Property Name="PHONE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="USERNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="USERNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="PASSWORD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="CODE" Type="Int32" />
     <Property Name="AVATAR" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="BOOK">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NAME" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="CONTENT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AUTHOR" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PUBLISHER" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="COST" Type="Int32" />
+    <Property Name="IN_LIB" Type="Int16" />
+    <Property Name="OUT_LIB" Type="Int16" />
+    <Property Name="COVER" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
 </Schema>
