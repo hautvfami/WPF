@@ -47,5 +47,15 @@ namespace AppWithDataset.Model
             udObj = a;
             db.SaveChanges();
         }
+
+        public static USER handleLogin(string u, string p)
+        {
+            var user = db.USERS.Find(u);
+            if (user.PASSWORD == p && user.USERNAME == u)
+            {
+                return user;
+            }
+            return null;
+        }
     }
 }

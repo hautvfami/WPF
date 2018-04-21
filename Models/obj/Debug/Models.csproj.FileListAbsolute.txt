@@ -1,0 +1,10 @@
+D:\Programming\CSharp\AppWithDataset\Models\bin\Debug\Models.dll.config
+D:\Programming\CSharp\AppWithDataset\Models\bin\Debug\Models.dll
+D:\Programming\CSharp\AppWithDataset\Models\bin\Debug\Models.pdb
+D:\Programming\CSharp\AppWithDataset\Models\bin\Debug\EntityFramework.dll
+D:\Programming\CSharp\AppWithDataset\Models\bin\Debug\EntityFramework.SqlServer.dll
+D:\Programming\CSharp\AppWithDataset\Models\bin\Debug\EntityFramework.xml
+D:\Programming\CSharp\AppWithDataset\Models\bin\Debug\EntityFramework.SqlServer.xml
+D:\Programming\CSharp\AppWithDataset\Models\obj\Debug\Models.csprojResolveAssemblyReference.cache
+D:\Programming\CSharp\AppWithDataset\Models\obj\Debug\Models.dll
+D:\Programming\CSharp\AppWithDataset\Models\obj\Debug\Models.pdb
