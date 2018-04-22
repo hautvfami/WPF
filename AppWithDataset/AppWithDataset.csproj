@@ -80,6 +80,7 @@
     <Compile Include="Model\USER.cs">
       <DependentUpon>UserDBContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\UserBook.cs" />
     <Compile Include="Model\UserDBContext.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -100,6 +101,7 @@
     </Compile>
     <Compile Include="Services\Secure.cs" />
     <Compile Include="ViewModel\BookViewModel.cs" />
+    <Compile Include="ViewModel\BorrowViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\PropertyChangedBase.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />

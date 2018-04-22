@@ -56,6 +56,7 @@
           <Property Name="USERID" Type="int" Nullable="false" />
           <Property Name="BORROW_DATE" Type="smalldatetime" />
           <Property Name="RETURN_DATE" Type="smalldatetime" />
+          <Property Name="IS_RETURN" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="USERS">
           <Key>
@@ -220,6 +221,7 @@
           <Property Name="RETURN_DATE" Type="DateTime" Precision="0" />
           <NavigationProperty Name="BOOK" Relationship="WFModel.FK__USER_BOOK__BOOKI__5AEE82B9" FromRole="USER_BOOK" ToRole="BOOK" />
           <NavigationProperty Name="USER" Relationship="WFModel.FK__USER_BOOK__USERI__5BE2A6F2" FromRole="USER_BOOK" ToRole="USER" />
+          <Property Name="IS_RETURN" Type="Boolean" Nullable="false" />
         </EntityType>
         <Association Name="FK__USER_BOOK__BOOKI__5AEE82B9">
           <End Type="WFModel.BOOK" Role="BOOK" Multiplicity="1" />
@@ -326,6 +328,7 @@
           <EntitySetMapping Name="USER_BOOK">
             <EntityTypeMapping TypeName="WFModel.USER_BOOK">
               <MappingFragment StoreEntitySet="USER_BOOK">
+                <ScalarProperty Name="IS_RETURN" ColumnName="IS_RETURN" />
                 <ScalarProperty Name="RETURN_DATE" ColumnName="RETURN_DATE" />
                 <ScalarProperty Name="BORROW_DATE" ColumnName="BORROW_DATE" />
                 <ScalarProperty Name="USERID" ColumnName="USERID" />

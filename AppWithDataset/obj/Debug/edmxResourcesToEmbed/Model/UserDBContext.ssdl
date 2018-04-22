@@ -51,6 +51,7 @@
     <Property Name="USERID" Type="int" Nullable="false" />
     <Property Name="BORROW_DATE" Type="smalldatetime" />
     <Property Name="RETURN_DATE" Type="smalldatetime" />
+    <Property Name="IS_RETURN" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="USERS">
     <Key>

@@ -26,6 +26,7 @@ namespace AppWithDataset.ViewModel
         public LoginViewModel()
         {
             registerCommand();
+            UserInfo.USERNAME = "hautv";
         }
 
 

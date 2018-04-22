@@ -7,6 +7,7 @@
     <Window.Resources>
         <custom:UserViewModel x:Key="User"/>
         <custom:BookViewModel x:Key="Book"/>
+        <custom:BorrowViewModel x:Key="Borrow"/>
     </Window.Resources>
     <TabControl>
         <TabItem Header="Users Management">
@@ -91,12 +92,50 @@
         </TabItem>
 
         <TabItem Header="Books Borrow">
-            Constructing...
-        </TabItem>
+            <Grid DataContext="{StaticResource Borrow}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="90*"/>
+                    <ColumnDefinition Width="403*"/>
+                </Grid.ColumnDefinitions>
+                <DataGrid ItemsSource="{Binding UserList}" SelectedItem="{Binding SelectedUser, Mode=TwoWay}" SelectionMode="Extended" SelectionUnit="FullRow" AutoGenerateColumns="False" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="154" Width="224" Grid.ColumnSpan="2">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Width="30" Header="Id" Binding="{Binding ID}"/>
+                        <DataGridTextColumn Width="150" Header="Tên người dùng" Binding="{Binding NAME}" />
+                    </DataGrid.Columns>
+                </DataGrid>
+                <TextBox Text="{Binding SearchByUserId}" HorizontalAlignment="Left" Height="23" Margin="10,169,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="144"/>
+                <Button Command="{Binding SearchUserCommand}" Content="Id Search" HorizontalAlignment="Left" Margin="159,169,0,0" VerticalAlignment="Top" Width="75" Grid.ColumnSpan="2" Height="23"/>
 
+                <DataGrid ItemsSource="{Binding BookList}" SelectedItem="{Binding SelectedBook, Mode=TwoWay}" SelectionMode="Extended" SelectionUnit="FullRow" AutoGenerateColumns="False" HorizontalAlignment="Left" Margin="10,274,0,0" VerticalAlignment="Top" Height="154" Width="224" Grid.ColumnSpan="2">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Width="30" Header="Id" Binding="{Binding ID}"/>
+                        <DataGridTextColumn Width="150" Header="Tên sách" Binding="{Binding NAME}" />
+                    </DataGrid.Columns>
+                </DataGrid>
+                <TextBox Text="{Binding SearchByBookId}" HorizontalAlignment="Left" Height="23" Margin="10,432,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="144"/>
+                <Button Command="{Binding SearchBookCommand}" Content="Id Search" HorizontalAlignment="Left" Margin="159,432,0,0" VerticalAlignment="Top" Width="75" Grid.ColumnSpan="2" Height="23"/>
 
-        <TabItem Header="Books Return">
-            Constructing...
+                <Border BorderBrush="Black" BorderThickness="1" Grid.Column="1" HorizontalAlignment="Left" Height="451" Margin="74,10,0,0" VerticalAlignment="Top" Width="490">
+                    <Grid>
+                        <Label Content="User Id" Margin="24,98,349,325.6"/>
+                        <Label Content="User Name" Margin="24,129,349,294.6"/>
+                        <Label Content="Book Id" Margin="24,191,349,232.6"/>
+                        <Label Content="Book Name" Margin="24,222,349,201.6"/>
+                        <Label Content="Price" Margin="24,253,349,170.6"/>
+                        <Label Content="Current time:" Margin="24,401,349,22.6"/>
+                        <Label Content="{Binding Time}" Margin="144,401,229,22.6"/>
+                        <Label Content="{Binding SelectedUser.ID}" HorizontalAlignment="Left" Margin="202,99,0,0" VerticalAlignment="Top" Width="173"/>
+                        <Label Content="{Binding SelectedUser.NAME}" HorizontalAlignment="Left" Margin="202,129,0,0" VerticalAlignment="Top" Width="173"/>
+                        <Label Content="{Binding SelectedBook.ID}" HorizontalAlignment="Left" Margin="202,191,0,0" VerticalAlignment="Top" Width="173"/>
+                        <Label Content="{Binding SelectedBook.NAME}" HorizontalAlignment="Left" Margin="202,222,0,0" VerticalAlignment="Top" Width="173"/>
+                        <Label Content="{Binding SelectedBook.COST}" HorizontalAlignment="Left" Margin="202,253,0,0" VerticalAlignment="Top" Width="173"/>
+                        <TextBlock FontSize="18" FontWeight="Bold" HorizontalAlignment="Left" Margin="24,10,0,0" TextWrapping="Wrap" Text="Borrow Bill" VerticalAlignment="Top" Height="28" Width="184"/>
+                    </Grid>
+                </Border>
+                <Button Command="{Binding BorrowCommand}" Content="Borrow" Grid.Column="1" HorizontalAlignment="Left" Margin="621,10,0,0" VerticalAlignment="Top" Width="139" Height="24"/>
+                <Button Command="{Binding UpdateCommand}" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="621,39,0,0" VerticalAlignment="Top" Width="139" Height="24"/>
+                <Button Command="{Binding DeleteCommand}" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="621,68,0,0" VerticalAlignment="Top" Width="139" Height="24"/>
+            </Grid>
         </TabItem>
     </TabControl>
 </Window>

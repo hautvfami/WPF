@@ -64,6 +64,7 @@
     <EntitySetMapping Name="USER_BOOK">
       <EntityTypeMapping TypeName="WFModel.USER_BOOK">
         <MappingFragment StoreEntitySet="USER_BOOK">
+          <ScalarProperty Name="IS_RETURN" ColumnName="IS_RETURN" />
           <ScalarProperty Name="RETURN_DATE" ColumnName="RETURN_DATE" />
           <ScalarProperty Name="BORROW_DATE" ColumnName="BORROW_DATE" />
           <ScalarProperty Name="USERID" ColumnName="USERID" />
