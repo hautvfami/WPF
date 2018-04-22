@@ -3,6 +3,22 @@
   <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="USERS" EntityType="WFModel.USER" />
     <EntitySet Name="BOOKS" EntityType="WFModel.BOOK" />
+    <EntitySet Name="MENUs" EntityType="WFModel.MENU" />
+    <EntitySet Name="SUB_MENU" EntityType="WFModel.SUB_MENU" />
+    <EntitySet Name="sysdiagrams" EntityType="WFModel.sysdiagram" />
+    <EntitySet Name="USER_BOOK" EntityType="WFModel.USER_BOOK" />
+    <AssociationSet Name="FK__USER_BOOK__BOOKI__5AEE82B9" Association="WFModel.FK__USER_BOOK__BOOKI__5AEE82B9">
+      <End Role="BOOK" EntitySet="BOOKS" />
+      <End Role="USER_BOOK" EntitySet="USER_BOOK" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SUB_MENU__IDMAIN__4D94879B" Association="WFModel.FK__SUB_MENU__IDMAIN__4D94879B">
+      <End Role="MENU" EntitySet="MENUs" />
+      <End Role="SUB_MENU" EntitySet="SUB_MENU" />
+    </AssociationSet>
+    <AssociationSet Name="FK__USER_BOOK__USERI__5BE2A6F2" Association="WFModel.FK__USER_BOOK__USERI__5BE2A6F2">
+      <End Role="USER" EntitySet="USERS" />
+      <End Role="USER_BOOK" EntitySet="USER_BOOK" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="USER">
     <Key>
@@ -16,6 +32,7 @@
     <Property Name="PASSWORD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="CODE" Type="Int32" />
     <Property Name="AVATAR" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="USER_BOOK" Relationship="WFModel.FK__USER_BOOK__USERI__5BE2A6F2" FromRole="USER" ToRole="USER_BOOK" />
   </EntityType>
   <EntityType Name="BOOK">
     <Key>
@@ -30,5 +47,84 @@
     <Property Name="IN_LIB" Type="Int16" />
     <Property Name="OUT_LIB" Type="Int16" />
     <Property Name="COVER" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="USER_BOOK" Relationship="WFModel.FK__USER_BOOK__BOOKI__5AEE82B9" FromRole="BOOK" ToRole="USER_BOOK" />
   </EntityType>
+  <EntityType Name="MENU">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NAME" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="LINK" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="CODE" Type="Int32" />
+    <NavigationProperty Name="SUB_MENU" Relationship="WFModel.FK__SUB_MENU__IDMAIN__4D94879B" FromRole="MENU" ToRole="SUB_MENU" />
+  </EntityType>
+  <EntityType Name="SUB_MENU">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NAME" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="LINK" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="IDMAIN" Type="Int32" />
+    <NavigationProperty Name="MENU" Relationship="WFModel.FK__SUB_MENU__IDMAIN__4D94879B" FromRole="SUB_MENU" ToRole="MENU" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="USER_BOOK">
+    <Key>
+      <PropertyRef Name="BOOKID" />
+      <PropertyRef Name="USERID" />
+    </Key>
+    <Property Name="BOOKID" Type="Int32" Nullable="false" />
+    <Property Name="USERID" Type="Int32" Nullable="false" />
+    <Property Name="BORROW_DATE" Type="DateTime" Precision="0" />
+    <Property Name="RETURN_DATE" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="BOOK" Relationship="WFModel.FK__USER_BOOK__BOOKI__5AEE82B9" FromRole="USER_BOOK" ToRole="BOOK" />
+    <NavigationProperty Name="USER" Relationship="WFModel.FK__USER_BOOK__USERI__5BE2A6F2" FromRole="USER_BOOK" ToRole="USER" />
+  </EntityType>
+  <Association Name="FK__USER_BOOK__BOOKI__5AEE82B9">
+    <End Type="WFModel.BOOK" Role="BOOK" Multiplicity="1" />
+    <End Type="WFModel.USER_BOOK" Role="USER_BOOK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BOOK">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="USER_BOOK">
+        <PropertyRef Name="BOOKID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SUB_MENU__IDMAIN__4D94879B">
+    <End Type="WFModel.MENU" Role="MENU" Multiplicity="0..1" />
+    <End Type="WFModel.SUB_MENU" Role="SUB_MENU" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MENU">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SUB_MENU">
+        <PropertyRef Name="IDMAIN" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__USER_BOOK__USERI__5BE2A6F2">
+    <End Type="WFModel.USER" Role="USER" Multiplicity="1" />
+    <End Type="WFModel.USER_BOOK" Role="USER_BOOK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USER">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="USER_BOOK">
+        <PropertyRef Name="USERID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

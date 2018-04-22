@@ -9,12 +9,12 @@ using System.Windows;
 using System.Windows.Input;
 using AppWithDataset.Model;
 using System.IO;
+using AppWithDataset.Services;
 
 namespace AppWithDataset.ViewModel
 {
     class UserViewModel : PropertyChangedBase
     {
-
         // Storage UserList
         private ObservableCollection<USER> _userList;
         public ObservableCollection<USER> UserList

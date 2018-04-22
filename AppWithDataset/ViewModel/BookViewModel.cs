@@ -67,7 +67,6 @@ namespace AppWithDataset.ViewModel
 
         public void _setPic()
         {
-            Console.WriteLine("=======debug _setPic ============");
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
             dlg.ShowDialog();
             if (dlg.FileName != null)

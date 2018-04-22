@@ -27,5 +27,9 @@ namespace AppWithDataset.Model
     
         public virtual DbSet<USER> USERS { get; set; }
         public virtual DbSet<BOOK> BOOKS { get; set; }
+        public virtual DbSet<MENU> MENUs { get; set; }
+        public virtual DbSet<SUB_MENU> SUB_MENU { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<USER_BOOK> USER_BOOK { get; set; }
     }
 }

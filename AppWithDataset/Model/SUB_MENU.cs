@@ -12,23 +12,13 @@ namespace AppWithDataset.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class BOOK
+    public partial class SUB_MENU
     {
-        public BOOK()
-        {
-            this.USER_BOOK = new HashSet<USER_BOOK>();
-        }
-    
         public int ID { get; set; }
         public string NAME { get; set; }
-        public string CONTENT { get; set; }
-        public string AUTHOR { get; set; }
-        public string PUBLISHER { get; set; }
-        public Nullable<int> COST { get; set; }
-        public Nullable<short> IN_LIB { get; set; }
-        public Nullable<short> OUT_LIB { get; set; }
-        public byte[] COVER { get; set; }
+        public string LINK { get; set; }
+        public Nullable<int> IDMAIN { get; set; }
     
-        public virtual ICollection<USER_BOOK> USER_BOOK { get; set; }
+        public virtual MENU MENU { get; set; }
     }
 }

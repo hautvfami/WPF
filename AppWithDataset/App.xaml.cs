@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using AppWithDataset.ViewModel;
 
 namespace AppWithDataset
 {
@@ -20,18 +21,16 @@ namespace AppWithDataset
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-            View.MainWindow win = new View.MainWindow();
-            View.Login login = new View.Login();
-            if (!isLogin)
+            //View.MainWindow win = new View.MainWindow();
+            View.LoginWindow LoginWindow = new View.LoginWindow();
+            LoginWindow.Show();
+            ((LoginViewModel)LoginWindow.DataContext).LoginCompleted += (s, ev) =>
             {
-                login.Hide();
-                win.Show();
-            }
-            else
-            {
-                win.Hide();
-                login.Show();
-            }
+                View.MainWindow MainWindow = new View.MainWindow();
+                LoginWindow.Hide();
+                LoginWindow.Close();
+                MainWindow.Show();
+            };   
         }
     }
 }

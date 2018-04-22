@@ -46,6 +46,7 @@
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Windows" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -67,6 +68,15 @@
       <DependentUpon>UserDBContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Books.cs" />
+    <Compile Include="Model\MENU.cs">
+      <DependentUpon>UserDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SUB_MENU.cs">
+      <DependentUpon>UserDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\sysdiagram.cs">
+      <DependentUpon>UserDBContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\USER.cs">
       <DependentUpon>UserDBContext.tt</DependentUpon>
     </Compile>
@@ -85,13 +95,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>UserDBContext.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Model\USER_BOOK.cs">
+      <DependentUpon>UserDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\Secure.cs" />
     <Compile Include="ViewModel\BookViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\PropertyChangedBase.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
     <Compile Include="ViewModel\UserViewModel.cs" />
-    <Compile Include="View\Login.xaml.cs">
-      <DependentUpon>Login.xaml</DependentUpon>
+    <Compile Include="View\LoginWindow.xaml.cs">
+      <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -100,7 +114,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="View\Login.xaml">
+    <Page Include="View\LoginWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -145,7 +159,9 @@
       <DependentUpon>UserDBContext.edmx</DependentUpon>
       <LastGenOutput>UserDBContext.cs</LastGenOutput>
     </None>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -153,7 +169,9 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

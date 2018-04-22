@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="WFModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="WFModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="BOOKS">
     <Key>
       <PropertyRef Name="ID" />
@@ -14,6 +14,44 @@
     <Property Name="OUT_LIB" Type="smallint" />
     <Property Name="COVER" Type="image" />
   </EntityType>
+  <EntityType Name="MENU">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="LINK" Type="varchar" MaxLength="200" />
+    <Property Name="CODE" Type="int" />
+  </EntityType>
+  <EntityType Name="SUB_MENU">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="LINK" Type="varchar" MaxLength="200" />
+    <Property Name="IDMAIN" Type="int" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="USER_BOOK">
+    <Key>
+      <PropertyRef Name="BOOKID" />
+      <PropertyRef Name="USERID" />
+    </Key>
+    <Property Name="BOOKID" Type="int" Nullable="false" />
+    <Property Name="USERID" Type="int" Nullable="false" />
+    <Property Name="BORROW_DATE" Type="smalldatetime" />
+    <Property Name="RETURN_DATE" Type="smalldatetime" />
+  </EntityType>
   <EntityType Name="USERS">
     <Key>
       <PropertyRef Name="ID" />
@@ -27,8 +65,60 @@
     <Property Name="CODE" Type="int" />
     <Property Name="AVATAR" Type="image" />
   </EntityType>
+  <Association Name="FK__SUB_MENU__IDMAIN__4D94879B">
+    <End Role="MENU" Type="Self.MENU" Multiplicity="0..1" />
+    <End Role="SUB_MENU" Type="Self.SUB_MENU" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MENU">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SUB_MENU">
+        <PropertyRef Name="IDMAIN" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__USER_BOOK__BOOKI__5AEE82B9">
+    <End Role="BOOKS" Type="Self.BOOKS" Multiplicity="1" />
+    <End Role="USER_BOOK" Type="Self.USER_BOOK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BOOKS">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="USER_BOOK">
+        <PropertyRef Name="BOOKID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__USER_BOOK__USERI__5BE2A6F2">
+    <End Role="USERS" Type="Self.USERS" Multiplicity="1" />
+    <End Role="USER_BOOK" Type="Self.USER_BOOK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USERS">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="USER_BOOK">
+        <PropertyRef Name="USERID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="WFModelStoreContainer">
     <EntitySet Name="BOOKS" EntityType="Self.BOOKS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MENU" EntityType="Self.MENU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SUB_MENU" EntityType="Self.SUB_MENU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USER_BOOK" EntityType="Self.USER_BOOK" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="USERS" EntityType="Self.USERS" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__SUB_MENU__IDMAIN__4D94879B" Association="Self.FK__SUB_MENU__IDMAIN__4D94879B">
+      <End Role="MENU" EntitySet="MENU" />
+      <End Role="SUB_MENU" EntitySet="SUB_MENU" />
+    </AssociationSet>
+    <AssociationSet Name="FK__USER_BOOK__BOOKI__5AEE82B9" Association="Self.FK__USER_BOOK__BOOKI__5AEE82B9">
+      <End Role="BOOKS" EntitySet="BOOKS" />
+      <End Role="USER_BOOK" EntitySet="USER_BOOK" />
+    </AssociationSet>
+    <AssociationSet Name="FK__USER_BOOK__USERI__5BE2A6F2" Association="Self.FK__USER_BOOK__USERI__5BE2A6F2">
+      <End Role="USERS" EntitySet="USERS" />
+      <End Role="USER_BOOK" EntitySet="USER_BOOK" />
+    </AssociationSet>
   </EntityContainer>
 </Schema>

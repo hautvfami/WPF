@@ -36,5 +36,5 @@ D:\Programming\CSharp\AppWithDataset\AppWithDataset\obj\Debug\View\MainWindow.ba
 D:\Programming\CSharp\AppWithDataset\AppWithDataset\obj\Debug\AppWithDataset.g.resources
 D:\Programming\CSharp\AppWithDataset\AppWithDataset\obj\Debug\AppWithDataset.Properties.Resources.resources
 D:\Programming\CSharp\AppWithDataset\AppWithDataset\obj\Debug\AppWithDataset.csproj.GenerateResource.Cache
-D:\Programming\CSharp\AppWithDataset\AppWithDataset\obj\Debug\View\Login.g.cs
-D:\Programming\CSharp\AppWithDataset\AppWithDataset\obj\Debug\View\Login.baml
+D:\Programming\CSharp\AppWithDataset\AppWithDataset\obj\Debug\View\LoginWindow.g.cs
+D:\Programming\CSharp\AppWithDataset\AppWithDataset\obj\Debug\View\LoginWindow.baml

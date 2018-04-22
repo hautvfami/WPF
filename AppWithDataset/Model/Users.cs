@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace AppWithDataset.Model
 {
@@ -48,14 +49,11 @@ namespace AppWithDataset.Model
             db.SaveChanges();
         }
 
-        public static USER handleLogin(string u, string p)
+        public static USER handleLogin(string username, string password)
         {
-            var user = db.USERS.Find(u);
-            if (user.PASSWORD == p && user.USERNAME == u)
-            {
-                return user;
-            }
-            return null;
+            USER user = new USER();
+            user = db.USERS.Where(b=>b.USERNAME == username&&b.PASSWORD==password).FirstOrDefault();
+            return user;
         }
     }
 }
