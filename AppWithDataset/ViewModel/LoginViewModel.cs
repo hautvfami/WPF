@@ -10,55 +10,6 @@ using System.Windows.Input;
 using AppWithDataset.Model;
 using System.IO;
 
-
-//namespace WPF.ViewModels
-//{
-//    public class LoginViewModel : BaseViewModel
-//    {
-
-//         public event EventHandler LoginCompleted;
-
-//         public void RaiseLoginCompleted()
-//        {
-//            if (LoginCompleted != null)
-//            {
-//                LoginCompleted(this, EventArgs.Empty);
-//            }
-//        }
-
-//        private string login;
-//        private string password;
-
-//        public string Login
-//        {
-//            get { return login; }
-//            set { login = value; OnPropertyChanged("Login"); }
-//        }
-
-//        private void OnPropertyChanged(string p)
-//        {
-//            throw new NotImplementedException();
-//        }
-
-//        public string Password {
-//            private get { return password; }
-//            set { password = value; OnPropertyChanged("Password"); }
-//        }
-
-//        public void LoginOp(object o)
-//        {
-//            #Validation logic
-//            RaiseLoginCompleted();
-//        }
-
-//        public ICommand LoginCommand { get; set; }
-
-//        public LoginViewModel() {    
-//            LoginCommand = new DelegateCommand(LoginOp);
-//            OnPropertyChanged("LoginOp");
-//        }   
-//    }
-//}
 namespace AppWithDataset.ViewModel
 {
     class LoginViewModel : PropertyChangedBase
@@ -66,6 +17,7 @@ namespace AppWithDataset.ViewModel
         public event EventHandler LoginCompleted;
 
         private USER userInfo = new USER();
+        public String Message{get; set;}
         public USER UserInfo { get { return userInfo; } set { userInfo = value;} }
         public void passwordChanged()
         {
@@ -82,11 +34,20 @@ namespace AppWithDataset.ViewModel
             USER user = Model.Users.handleLogin(u.USERNAME, u.PASSWORD);
             if (user != null)
             {
-                RaiseLoginCompleted();
+                if (user.CODE <= 1)
+                {
+                    RaiseLoginCompleted();
+                }
+                else
+                {
+                    Message = "Bạn chưa được cấp quyền truy cập ứng dụng!";
+                    OnPropertyChanged("Message");
+                }
             }
             else
             {
-                MessageBox.Show("Sai tên đăng nhập hoặc mật khẩu!");
+                Message = "Sai tên đăng nhập hoặc mật khẩu!";
+                OnPropertyChanged("Message");
             }
         }
 

@@ -49,6 +49,20 @@ namespace AppWithDataset.ViewModel
                 } OnPropertyChanged("SelectedBook");
             }
         }
+
+
+        public String SortByName { get; set; }
+        private void sortByName()
+        {
+            List<BOOK> sortedList = BookList.OrderBy(x => x.NAME.ToUpper().Contains(SortByName.ToUpper())).ToList();
+            sortedList.Reverse();
+            BookList.Clear();
+            foreach (var sortedItem in sortedList)
+                BookList.Add(sortedItem);
+            SelectedBook = BookList.First();
+            OnPropertyChanged("BookList");
+        }
+
         public BookViewModel()
         {
             BookList = new ObservableCollection<BOOK>(Model.Books.getAllUsers() as List<BOOK>);
@@ -89,6 +103,7 @@ namespace AppWithDataset.ViewModel
             UpdateCommand = new RelayCommand<BOOK>(u => u != null, u => { Model.Books.handleUpdate(u); Refresh(); });
             EmptyCommand = new RelayCommand<BOOK>(u => u != null, u => { SelectedBook = new BOOK(); });
             SetPicCommand = new RelayCommand<BOOK>(null, u => { this._setPic(); });
+            SearchCommand = new RelayCommand<USER>(null, u => { this.sortByName(); });
         }
 
         public ObservableCollection<BOOK> Books { get; set; }
@@ -97,6 +112,7 @@ namespace AppWithDataset.ViewModel
         public ICommand UpdateCommand { get; set; }
         public ICommand EmptyCommand { get; set; }
         public ICommand SetPicCommand { get; set; }
+        public ICommand SearchCommand { get; set; }
         // End action commands
     }
 }
