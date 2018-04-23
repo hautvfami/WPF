@@ -86,8 +86,8 @@
     </Key>
     <Property Name="BOOKID" Type="Int32" Nullable="false" />
     <Property Name="USERID" Type="Int32" Nullable="false" />
-    <Property Name="BORROW_DATE" Type="DateTime" Precision="0" />
-    <Property Name="RETURN_DATE" Type="DateTime" Precision="0" />
+    <Property Name="BORROW_DATE" Type="DateTime" Precision="7" Nullable="false" />
+    <Property Name="RETURN_DATE" Type="DateTime" Precision="7" Nullable="false" />
     <NavigationProperty Name="BOOK" Relationship="WFModel.FK__USER_BOOK__BOOKI__5AEE82B9" FromRole="USER_BOOK" ToRole="BOOK" />
     <NavigationProperty Name="USER" Relationship="WFModel.FK__USER_BOOK__USERI__5BE2A6F2" FromRole="USER_BOOK" ToRole="USER" />
     <Property Name="IS_RETURN" Type="Boolean" Nullable="false" />

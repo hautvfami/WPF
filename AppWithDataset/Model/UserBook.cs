@@ -25,7 +25,7 @@ namespace AppWithDataset.Model
             }
             catch (Exception e)
             {
-                Console.WriteLine("Error: \n" + e);
+                Console.WriteLine("Error: \n\n\n\n" + e);
                 MessageBox.Show("Không thể mượn cuốn sách này nữa!");
             }
         }

@@ -16,8 +16,8 @@ namespace AppWithDataset.Model
     {
         public int BOOKID { get; set; }
         public int USERID { get; set; }
-        public Nullable<System.DateTime> BORROW_DATE { get; set; }
-        public Nullable<System.DateTime> RETURN_DATE { get; set; }
+        public System.DateTime BORROW_DATE { get; set; }
+        public System.DateTime RETURN_DATE { get; set; }
         public bool IS_RETURN { get; set; }
     
         public virtual BOOK BOOK { get; set; }

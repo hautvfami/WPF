@@ -50,8 +50,8 @@ namespace AppWithDataset.ViewModel
             {
                 ub.USERID = SelectedUser.ID;
                 ub.BOOKID = SelectedBook.ID;
-                ub.BORROW_DATE = null;
-                ub.RETURN_DATE = null;
+                ub.BORROW_DATE = DateTime.Now;
+                ub.RETURN_DATE = DateTime.Now.AddMonths(6);
                 ub.IS_RETURN = false;
             }
         }
@@ -121,6 +121,7 @@ namespace AppWithDataset.ViewModel
             BookList = new ObservableCollection<BOOK>(Model.Books.getAllUsers() as List<BOOK>);
             registerCommand();
             SelectedUser = UserList.First();
+            SelectedBook = BookList.First();
         }
 
         private void Refresh()

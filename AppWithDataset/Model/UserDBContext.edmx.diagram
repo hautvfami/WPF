@@ -7,9 +7,9 @@
       <Diagram DiagramId="284a90a739f547aaaa4feeb32d0e2e22" Name="Diagram1" ZoomLevel="76">
         <EntityTypeShape EntityType="WFModel.USER" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="WFModel.BOOK" Width="1.5" PointX="3.375" PointY="0.75" />
-        <EntityTypeShape EntityType="WFModel.MENU" Width="1.5" PointX="0.75" PointY="4.875" />
-        <EntityTypeShape EntityType="WFModel.SUB_MENU" Width="1.5" PointX="3" PointY="4.875" />
-        <EntityTypeShape EntityType="WFModel.sysdiagram" Width="1.5" PointX="5.75" PointY="4.75" />
+        <EntityTypeShape EntityType="WFModel.MENU" Width="1.5" PointX="0.75" PointY="4.125" />
+        <EntityTypeShape EntityType="WFModel.SUB_MENU" Width="1.5" PointX="3" PointY="4.125" />
+        <EntityTypeShape EntityType="WFModel.sysdiagram" Width="1.5" PointX="5.875" PointY="4" />
         <EntityTypeShape EntityType="WFModel.USER_BOOK" Width="1.5" PointX="6" PointY="1.125" />
         <AssociationConnector Association="WFModel.FK__USER_BOOK__BOOKI__5AEE82B9" />
         <AssociationConnector Association="WFModel.FK__SUB_MENU__IDMAIN__4D94879B" />

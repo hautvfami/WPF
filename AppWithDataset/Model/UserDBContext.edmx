@@ -54,8 +54,8 @@
           </Key>
           <Property Name="BOOKID" Type="int" Nullable="false" />
           <Property Name="USERID" Type="int" Nullable="false" />
-          <Property Name="BORROW_DATE" Type="smalldatetime" />
-          <Property Name="RETURN_DATE" Type="smalldatetime" />
+          <Property Name="BORROW_DATE" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="RETURN_DATE" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="IS_RETURN" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="USERS">
@@ -83,7 +83,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__USER_BOOK__BOOKI__5AEE82B9">
+        <Association Name="FK__USER_BOOK__BOOKI__2EDAF651">
           <End Role="BOOKS" Type="Self.BOOKS" Multiplicity="1" />
           <End Role="USER_BOOK" Type="Self.USER_BOOK" Multiplicity="*" />
           <ReferentialConstraint>
@@ -95,7 +95,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__USER_BOOK__USERI__5BE2A6F2">
+        <Association Name="FK__USER_BOOK__USERI__2FCF1A8A">
           <End Role="USERS" Type="Self.USERS" Multiplicity="1" />
           <End Role="USER_BOOK" Type="Self.USER_BOOK" Multiplicity="*" />
           <ReferentialConstraint>
@@ -118,11 +118,11 @@
             <End Role="MENU" EntitySet="MENU" />
             <End Role="SUB_MENU" EntitySet="SUB_MENU" />
           </AssociationSet>
-          <AssociationSet Name="FK__USER_BOOK__BOOKI__5AEE82B9" Association="Self.FK__USER_BOOK__BOOKI__5AEE82B9">
+          <AssociationSet Name="FK__USER_BOOK__BOOKI__2EDAF651" Association="Self.FK__USER_BOOK__BOOKI__2EDAF651">
             <End Role="BOOKS" EntitySet="BOOKS" />
             <End Role="USER_BOOK" EntitySet="USER_BOOK" />
           </AssociationSet>
-          <AssociationSet Name="FK__USER_BOOK__USERI__5BE2A6F2" Association="Self.FK__USER_BOOK__USERI__5BE2A6F2">
+          <AssociationSet Name="FK__USER_BOOK__USERI__2FCF1A8A" Association="Self.FK__USER_BOOK__USERI__2FCF1A8A">
             <End Role="USERS" EntitySet="USERS" />
             <End Role="USER_BOOK" EntitySet="USER_BOOK" />
           </AssociationSet>
@@ -217,8 +217,8 @@
           </Key>
           <Property Name="BOOKID" Type="Int32" Nullable="false" />
           <Property Name="USERID" Type="Int32" Nullable="false" />
-          <Property Name="BORROW_DATE" Type="DateTime" Precision="0" />
-          <Property Name="RETURN_DATE" Type="DateTime" Precision="0" />
+          <Property Name="BORROW_DATE" Type="DateTime" Precision="7" Nullable="false" />
+          <Property Name="RETURN_DATE" Type="DateTime" Precision="7" Nullable="false" />
           <NavigationProperty Name="BOOK" Relationship="WFModel.FK__USER_BOOK__BOOKI__5AEE82B9" FromRole="USER_BOOK" ToRole="BOOK" />
           <NavigationProperty Name="USER" Relationship="WFModel.FK__USER_BOOK__USERI__5BE2A6F2" FromRole="USER_BOOK" ToRole="USER" />
           <Property Name="IS_RETURN" Type="Boolean" Nullable="false" />
